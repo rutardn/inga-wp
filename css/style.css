@@ -184,12 +184,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: absolute;
   left: var(--content-align);
   top: 172px;
-  width: 403px;
-  height: 316px;
+  width: 290px;
+  height: 190px;
   background-color: var(--color-grey-light);
   display: flex;
   align-items: center;
-  padding: 0 52px;
+  padding: 0 32px;
 }
 .hero__title {
   font-family: var(--font-head);
@@ -197,9 +197,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   color: var(--color-text-dark);
   margin: 0;
   line-height: 1.05;
-  font-size: 40px;
+  font-size: 32px;
 }
-.hero__title-emphasis { font-size: 48px; }
+.hero__title-emphasis { font-size: 32px; }
 
 /* ---------- About (Apie mane) ----------
    Pattern A: gap on LEFT, container flush RIGHT */
@@ -585,6 +585,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   z-index: 2;
   box-shadow: 0 8px 28px rgba(45, 45, 45, 0.12);
 }
+.bio-block__img--down-5 {
+  object-position: center 55%;
+}
 /* Green frame behind image — original corner offsets */
 .bio-block__image::before {
   content: "";
@@ -675,9 +678,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   .primary-nav a { font-size: 20px; }
 
   .hero { height: 620px; }
-  .hero__overlay { left: 48px; top: 120px; width: 320px; height: 250px; padding: 0 36px; }
-  .hero__title { font-size: 32px; }
-  .hero__title-emphasis { font-size: 38px; }
+  .hero__overlay { left: 48px; top: 120px; width: 260px; height: 170px; padding: 0 28px; }
+  .hero__title { font-size: 28px; }
+  .hero__title-emphasis { font-size: 28px; }
 
   .about { margin-top: -140px; }
   .about__inner {
@@ -689,8 +692,14 @@ ul { list-style: none; margin: 0; padding: 0; }
   }
   .about__text { flex: none; width: 100%; padding: 48px 32px; }
   .about__body { column-count: 1; }
-  .about__photo { flex: none; width: 100%; height: 420px; }
-  .about__photo img { inset: 0; height: 100%; top: auto; }
+  .about__photo { flex: none; width: 100%; height: 480px; }
+  .about__photo img {
+    inset: 0;
+    height: 100%;
+    top: auto;
+    object-fit: cover;
+    object-position: center 65%;
+  }
 
   .service-cards__inner { flex-wrap: wrap; gap: 32px; padding: 0 32px; }
   .service-card { width: 100%; max-width: 319px; height: 319px; margin: 0 auto; }
@@ -719,12 +728,23 @@ ul { list-style: none; margin: 0; padding: 0; }
     flex: none;
     max-width: none;
     min-width: 0;
-    height: 320px;
+    height: 400px;
     width: 100%;
   }
+  .service-detail__photo img,
   .service-detail--image-left .service-detail__photo img {
     top: 0;
     height: 100%;
+    object-fit: cover;
+  }
+  #psichoterapija .service-detail__photo img {
+    object-position: center 35%;
+  }
+  #supervizijos .service-detail__photo img {
+    object-position: center 24%;
+  }
+  #mokymai .service-detail__photo img {
+    object-position: center 35%;
   }
 
   .site-footer { height: auto; margin-top: 80px; }
@@ -762,6 +782,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   .bio-block--image-left .bio-block__text {
     grid-column: 1;
   }
+  /* Always text then image on mobile, even for image-left blocks */
+  .bio-block--image-left .bio-block__text { order: 1; }
+  .bio-block--image-left .bio-block__image { order: 2; }
   .bio-block__text { width: 100%; }
   .bio-block__image { width: 100%; height: 480px; }
   .qualifications {
@@ -795,9 +818,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   .primary-nav a { font-size: 22px; }
 
   .hero { height: 460px; }
-  .hero__overlay { left: 24px; right: 24px; top: 80px; width: auto; height: 200px; padding: 0 28px; }
-  .hero__title { font-size: 26px; }
-  .hero__title-emphasis { font-size: 30px; }
+  .hero__overlay { left: 24px; top: 80px; width: 220px; height: 140px; padding: 0 22px; }
+  .hero__title { font-size: 24px; }
+  .hero__title-emphasis { font-size: 24px; }
 
   .about { margin-top: -80px; }
   .about__inner {
@@ -805,7 +828,8 @@ ul { list-style: none; margin: 0; padding: 0; }
     width: calc(100% - 16px);
   }
   .about__text { padding: 36px 24px; }
-  .about__photo { height: 340px; }
+  .about__photo { height: 400px; }
+  .about__photo img { object-position: center 65%; }
 
   .service-cards { padding-top: 60px; }
   .service-cards__inner { padding: 0 16px; gap: 24px; }
@@ -816,6 +840,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   .service-detail__content,
   .service-detail--image-left .service-detail__content {
     padding: 36px 24px;
+  }
+  .service-detail__photo,
+  .service-detail--image-left .service-detail__photo {
+    height: 360px;
   }
   .site-footer__overlay { padding: 36px 24px; }
 
@@ -838,6 +866,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   .bio-block--image-left .bio-block__text {
     grid-column: 1;
   }
+  .bio-block--image-left .bio-block__text { order: 1; }
+  .bio-block--image-left .bio-block__image { order: 2; }
   .bio-block__text { width: 100%; }
   .bio-block__image { width: 100%; height: 420px; }
   .qualifications {
