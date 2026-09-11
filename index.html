@@ -27,7 +27,7 @@
       <nav id="primary-nav" class="primary-nav" aria-label="Pagrindinė navigacija">
         <ul>
           <li><a href="#pagrindinis" class="is-active">PAGRINDINIS</a></li>
-          <li><a href="#apie-mane">APIE MANE</a></li>
+          <li><a href="apie-mane.html">APIE MANE</a></li>
           <li><a href="#psichoterapija">PSICHOTERAPIJA</a></li>
           <li><a href="#supervizijos">SUPERVIZIJOS</a></li>
           <li><a href="#mokymai">MOKYMAI</a></li>
@@ -45,7 +45,7 @@
     <div class="hero__overlay">
       <h1 class="hero__title">
         Ne ištiesinti gyvenimą.<br />
-        Būti jame.
+        <span class="hero__title-emphasis">Būti jame.</span>
       </h1>
     </div>
   </section>
@@ -151,10 +151,14 @@
     <div class="service-detail__inner">
       <div class="service-detail__content">
         <h2 class="section-title section-title--light">MOKYMAI</h2>
-        <div class="service-detail__list">
-          <p><strong>Tarpkultūrinis ir įtraukusis ugdymas.</strong><br />Aprašymo trūksta – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p><strong>Darbas su mažiau galimybių turinčiu jaunimu.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p><strong>Projektų rengimas ir valdymas.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="service-detail__columns">
+          <div class="service-detail__col">
+            <p><strong>Tarpkultūrinis ir įtraukusis ugdymas.</strong><br />Aprašymo trūksta – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><strong>Darbas su mažiau galimybių turinčiu jaunimu.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div class="service-detail__col">
+            <p><strong>Projektų rengimas ir valdymas.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
         </div>
       </div>
       <div class="service-detail__photo">
@@ -168,7 +172,6 @@
        WP: footer.php  (contact + footer image + bottom bar)
        ============================================================ -->
   <footer id="kontaktai" class="site-footer">
-    <div class="site-footer__image" style="background-image: url('assets/images/footer-flowers.png');"></div>
     <div class="site-footer__overlay">
       <h2 class="section-title section-title--dark">SUSISIEK</h2>
       <ul class="contact-list">
@@ -176,6 +179,9 @@
         <li><a href="mailto:inga@kreivenaite.com">inga@kreivenaite.com</a></li>
         <li>Naujamiestis, Vilnius</li>
       </ul>
+    </div>
+    <div class="site-footer__image">
+      <img src="assets/images/footer-flowers.png" alt="" />
     </div>
     <div class="site-footer__bottom"></div>
   </footer>

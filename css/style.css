@@ -26,6 +26,12 @@
      psichoterapija/mokymai text, supervizijos image container */
   --content-align: 93px;
   --cta-bottom: 48px;
+  /* Bio grid: two equal columns + gap (text and images share the same tracks) */
+  --bio-gap: 129px;
+  --bio-col: 482px;
+  --bio-span: calc(var(--bio-col) * 2 + var(--bio-gap));
+  --bio-frame-offset: 24px;
+  --bio-divider-space: 80px;
 }
 
 /* ---------- Reset / base ---------- */
@@ -125,11 +131,26 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-size: 24px;
   letter-spacing: 0.02em;
   color: var(--color-text-light);
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
+  opacity: 0.55;
+  position: relative;
+  padding-bottom: 6px;
+  transition: opacity 0.25s ease;
 }
-.primary-nav a:hover,
-.primary-nav a.is-active { opacity: 1; }
+.primary-nav a:hover { opacity: 0.85; }
+.primary-nav a.is-active {
+  opacity: 1;
+}
+/* Subtle underline marker for the current page */
+.primary-nav a.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
 
 .nav-toggle {
   display: none;
@@ -180,7 +201,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   line-height: 1.05;
   font-size: 40px;
 }
-.hero__title br + * { font-size: 48px; }
+.hero__title-emphasis { font-size: 48px; }
 
 /* ---------- About (Apie mane) ----------
    Pattern A: gap on LEFT, container flush RIGHT */
@@ -198,6 +219,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin-right: 0;
   width: calc(100% - var(--content-align));
   max-width: none;
+  box-shadow: 0 8px 28px rgba(45, 45, 45, 0.12);
 }
 .about__text {
   flex: 0 0 558px;
@@ -220,21 +242,20 @@ ul { list-style: none; margin: 0; padding: 0; }
   overflow: hidden;
   position: relative;
 }
-/* Figma crop: image scaled to 163.89% height, shifted up by 43.35% */
+/* Fill the photo area edge-to-edge; shift crop down so person sits higher
+   (less black above the head, more of the body visible) */
 .about__photo img {
   position: absolute;
-  left: 0;
-  top: -43.35%;
+  inset: 0;
   width: 100%;
-  height: 163.89%;
-  max-width: none;
+  height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 68%;
 }
 
 /* ---------- Service cards grid ---------- */
 .service-cards {
-  padding: 100px 0 0;
+  padding: 130px 0 40px; /* space after Apie mane + before Psichoterapija section */
 }
 .service-cards__inner {
   display: flex;
@@ -246,15 +267,25 @@ ul { list-style: none; margin: 0; padding: 0; }
   width: 319px;
   height: 319px; /* nearer to square than the taller 379 Figma frame */
   background-color: var(--color-grey-light);
+  border: 1px solid rgba(45, 45, 45, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 28px;
   padding: 36px 24px 28px;
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
 }
-.service-card:hover { transform: translateY(-4px); }
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(53, 77, 63, 0.22);
+  background-color: #e8eae8;
+  border-color: rgba(45, 45, 45, 0.12);
+}
 .service-card__image {
   width: 198px;
   height: 198px; /* square crop matching the visual in Figma */
@@ -265,6 +296,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.45s ease;
+}
+.service-card:hover .service-card__image img {
+  transform: scale(1.08);
 }
 .service-card__label {
   font-family: var(--font-head);
@@ -275,6 +310,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   padding: 0;
   text-align: center;
   line-height: 1;
+  transition: letter-spacing 0.35s ease;
+}
+.service-card:hover .service-card__label {
+  letter-spacing: 0.06em;
 }
 
 /* ---------- Detailed service sections ----------
@@ -289,6 +328,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   height: 497px;
   background-color: var(--color-green-dark);
   color: var(--color-text-light);
+  box-shadow: 0 8px 28px rgba(45, 45, 45, 0.12);
 }
 /* Pattern B – Psichoterapija, Mokymai */
 .service-detail--text-left {
@@ -375,40 +415,55 @@ ul { list-style: none; margin: 0; padding: 0; }
 .service-detail__list p { margin-bottom: 20px; }
 .service-detail__list strong { font-weight: 700; }
 
-/* ---------- Footer / contact ---------- */
+/* ---------- Footer / contact ----------
+   Flower crop matches Figma (img scaled 194.28%, shifted up 94.28%).
+   SUSISIEK card sits on top of the picture. */
 .site-footer {
   position: relative;
   width: 100%;
   max-width: none;
-  margin: 60px 0 0;
+  margin: 260px 0 0; /* space after MOKYMAI + room for larger SUSISIEK overhang */
   height: 472px; /* 437 image + 35 bottom bar */
 }
 .site-footer__image {
   position: absolute;
   inset: 0 0 35px 0;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+/* Exact Figma framing for the flower field */
+.site-footer__image img {
+  position: absolute;
+  left: -0.02%;
+  top: -94.28%;
+  width: 100.04%;
+  height: 194.28%;
+  max-width: none;
 }
 .site-footer__overlay {
   position: absolute;
   left: var(--content-align);
-  top: 0;
-  width: 403px;
-  height: 258px;
+  top: -140px;
+  width: 460px;
+  height: 300px;
   background-color: var(--color-grey-light);
-  padding: 54px 52px 0;
+  padding: 56px 56px 0;
   color: var(--color-text-dark);
   z-index: 2;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.site-footer__overlay:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 .site-footer__overlay .section-title {
-  font-size: 24px;
+  font-size: 32px;
   margin-bottom: 28px;
 }
 .contact-list { font-family: var(--font-contact); }
 .contact-list li {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 .contact-list a:hover { text-decoration: underline; }
 .site-footer__bottom {
@@ -431,41 +486,58 @@ ul { list-style: none; margin: 0; padding: 0; }
   max-width: none;
 }
 
-/* Page title */
+/* Page title — same horizontal system as bio-block text */
 .content-page__title {
   font-family: var(--font-head);
   font-weight: 400;
-  font-size: 32px;
+  font-size: 72px;
   letter-spacing: 0.02em;
   color: var(--color-green-dark);
-  margin: 106px 0 0 var(--content-align);
+  max-width: 1280px;
+  margin: 106px auto var(--bio-divider-space);
+  padding-left: var(--content-align);
   line-height: 1;
 }
 
-/* Horizontal divider between blocks — thin, starts at --content-align */
+/* Dividers: identical clear space above & below on every divider */
 .content-divider {
   border: 0;
-  border-top: 1px solid var(--color-green-dark);
-  margin: 0 0 0 var(--content-align);
-  width: calc(100% - var(--content-align));
-  max-width: 1050px;
+  height: 1px;
+  max-width: var(--page-width);
+  width: 100%;
+  margin: var(--bio-divider-space) auto;
+  background-image: linear-gradient(var(--color-green-dark), var(--color-green-dark));
+  background-repeat: no-repeat;
+  background-size: min(var(--bio-span), calc(100% - var(--content-align))) 1px;
+  background-position: var(--content-align) center;
 }
 
-/* Bio block: alternating text/image with offset green box behind image.
-   All blocks start at --content-align from the left (shared vertical line). */
+/* Bio blocks — shared 2-column grid so pictures/text align across sections.
+   Padding only on the side where the green frame extends, so that frame
+   counts toward the divider distance (clear 80px from outermost edge). */
 .bio-block {
-  display: flex;
-  align-items: flex-start;
-  gap: 129px;
-  padding: 80px 0 80px var(--content-align);
+  display: grid;
+  grid-template-columns: var(--bio-col) var(--bio-col);
+  column-gap: var(--bio-gap);
+  align-items: start;
+  padding: 0 0 0 var(--content-align);
   max-width: 1280px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
-/* image-left variant: image still starts at --content-align, text follows */
-.bio-block--image-left { flex-direction: row; }
+.bio-block--image-right {
+  padding-top: var(--bio-frame-offset); /* room for frame above the photo */
+}
+.bio-block--image-left {
+  padding-bottom: var(--bio-frame-offset); /* room for frame below the photo */
+}
+.bio-block--image-right .bio-block__text { grid-column: 1; }
+.bio-block--image-right .bio-block__image { grid-column: 2; }
+.bio-block--image-left .bio-block__image { grid-column: 1; }
+.bio-block--image-left .bio-block__text { grid-column: 2; }
 
 .bio-block__text {
-  flex: 0 0 482px;
+  width: 100%;
   color: var(--color-green-dark);
   font-size: 15px;
   line-height: 26px;
@@ -475,10 +547,10 @@ ul { list-style: none; margin: 0; padding: 0; }
 .bio-block__text p:last-child { margin-bottom: 0; }
 .bio-block__text strong { font-weight: 700; }
 
-/* Image with offset dark-green box behind it */
+/* Images fill their grid column; same height everywhere */
 .bio-block__image {
   position: relative;
-  flex: 0 0 455px;
+  width: 100%;
   height: 598px;
 }
 .bio-block__image img {
@@ -488,35 +560,37 @@ ul { list-style: none; margin: 0; padding: 0; }
   object-fit: cover;
   object-position: center;
   z-index: 2;
+  box-shadow: 0 8px 28px rgba(45, 45, 45, 0.12);
 }
-/* The green box — offset behind the image */
+/* Green frame behind image — original corner offsets */
 .bio-block__image::before {
   content: "";
   position: absolute;
   background-color: var(--color-green-dark);
   z-index: 1;
+  box-shadow: 0 8px 28px rgba(45, 45, 45, 0.12);
 }
-/* Image right → box offset top-left */
+/* Image right → frame offset top-left */
 .bio-block--image-right .bio-block__image::before {
-  top: -72px;
-  left: -72px;
-  width: 389px;
-  height: 572px;
+  top: calc(-1 * var(--bio-frame-offset));
+  left: calc(-1 * var(--bio-frame-offset));
+  width: calc(100% - 66px);
+  height: calc(100% - 26px);
 }
-/* Image left → box offset bottom-right */
+/* Image left → frame offset bottom-right */
 .bio-block--image-left .bio-block__image::before {
-  bottom: -72px;
-  right: -72px;
-  width: 365px;
-  height: 537px;
+  bottom: calc(-1 * var(--bio-frame-offset));
+  right: calc(-1 * var(--bio-frame-offset));
+  width: calc(100% - 90px);
+  height: calc(100% - 61px);
 }
 
-/* Education / qualifications list */
+/* Education / qualifications list — same left edge */
 .qualifications {
   display: flex;
   align-items: flex-start;
   gap: 80px;
-  padding: 80px 0 80px var(--content-align);
+  padding: 0 0 var(--bio-divider-space) var(--content-align);
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -557,7 +631,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .hero { height: 620px; }
   .hero__overlay { left: 48px; top: 120px; width: 320px; height: 250px; padding: 0 36px; }
   .hero__title { font-size: 32px; }
-  .hero__title br + * { font-size: 38px; }
+  .hero__title-emphasis { font-size: 38px; }
 
   .about { margin-top: -140px; }
   .about__inner {
@@ -569,7 +643,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   }
   .about__text { flex: none; padding: 48px 32px 72px; }
   .about__photo { flex: none; width: 100%; height: 420px; }
-  .about__photo img { top: -30%; height: 160%; }
+  .about__photo img { inset: 0; height: 100%; top: auto; }
   .about__inner > .cta-more { left: 32px; }
 
   .service-cards__inner { flex-wrap: wrap; gap: 32px; padding: 0 32px; }
@@ -612,26 +686,47 @@ ul { list-style: none; margin: 0; padding: 0; }
     left: 32px;
   }
 
-  .site-footer { height: auto; }
+  .site-footer { height: auto; margin-top: 80px; }
   .site-footer__image { position: relative; height: 320px; }
-  .site-footer__overlay { position: relative; left: 0; top: 0; width: 100%; padding: 48px 32px; }
+  .site-footer__image img {
+    top: -60%;
+    height: 180%;
+  }
+  .site-footer__overlay {
+    position: relative;
+    left: 0;
+    top: auto;
+    width: 100%;
+    margin: 0 0 -100px;
+    padding: 48px 32px;
+  }
   .site-footer__bottom { position: relative; }
 
   /* Content page */
-  .content-page__title { margin-left: 32px; }
-  .content-divider { margin-left: 32px; width: calc(100% - 32px); }
-  .bio-block {
-    flex-direction: column;
-    gap: 48px;
-    padding: 60px 0 60px 32px;
+  .content-page__title { padding-left: 32px; margin: 80px auto 60px; font-size: 56px; }
+  .content-divider {
+    margin: 60px auto;
+    background-size: calc(100% - 32px) 1px;
+    background-position: 32px center;
   }
-  .bio-block--image-left { flex-direction: column; }
-  .bio-block__text { flex: none; width: 100%; }
-  .bio-block__image { flex: none; width: 100%; height: 480px; }
+  .bio-block {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 48px;
+    padding: 0 32px;
+  }
+  .bio-block--image-right .bio-block__text,
+  .bio-block--image-right .bio-block__image,
+  .bio-block--image-left .bio-block__image,
+  .bio-block--image-left .bio-block__text {
+    grid-column: 1;
+  }
+  .bio-block__text { width: 100%; }
+  .bio-block__image { width: 100%; height: 480px; }
   .qualifications {
     flex-direction: column;
     gap: 40px;
-    padding: 60px 0 60px 32px;
+    padding: 0 0 60px 32px;
   }
   .qualifications__list { flex: none; width: 100%; }
   .qualifications__decor { display: none; }
@@ -661,7 +756,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .hero { height: 460px; }
   .hero__overlay { left: 24px; right: 24px; top: 80px; width: auto; height: 200px; padding: 0 28px; }
   .hero__title { font-size: 26px; }
-  .hero__title br + * { font-size: 30px; }
+  .hero__title-emphasis { font-size: 30px; }
 
   .about { margin-top: -80px; }
   .about__inner {
@@ -689,20 +784,30 @@ ul { list-style: none; margin: 0; padding: 0; }
   .site-footer__overlay { padding: 36px 24px; }
 
   /* Content page */
-  .content-page__title { margin-left: 24px; }
-  .content-divider { margin-left: 24px; width: calc(100% - 24px); }
-  .bio-block {
-    flex-direction: column;
-    gap: 40px;
-    padding: 48px 0 48px 24px;
+  .content-page__title { padding-left: 24px; margin: 60px auto 48px; font-size: 42px; }
+  .content-divider {
+    margin: 48px auto;
+    background-size: calc(100% - 24px) 1px;
+    background-position: 24px center;
   }
-  .bio-block--image-left { flex-direction: column; }
-  .bio-block__text { flex: none; width: 100%; }
-  .bio-block__image { flex: none; width: 100%; height: 420px; }
+  .bio-block {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+    padding: 0 24px;
+  }
+  .bio-block--image-right .bio-block__text,
+  .bio-block--image-right .bio-block__image,
+  .bio-block--image-left .bio-block__image,
+  .bio-block--image-left .bio-block__text {
+    grid-column: 1;
+  }
+  .bio-block__text { width: 100%; }
+  .bio-block__image { width: 100%; height: 420px; }
   .qualifications {
     flex-direction: column;
     gap: 32px;
-    padding: 48px 0 48px 24px;
+    padding: 0 0 48px 24px;
   }
   .qualifications__list { flex: none; width: 100%; }
   .qualifications__decor { display: none; }
