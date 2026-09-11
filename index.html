@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inga Kreivėnaitė – Ne ištiesinti gyvenimą. Būti jame.</title>
+  <meta name="description" content="Inga Kreivėnaitė – psichoterapija, supervizijos ir mokymai. Naujamiestis, Vilnius." />
+
+  <!-- Fonts: Bebas Neue (headings), Outfit (body), Inter (contact) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       WP: header.php  (site header / primary navigation)
+       ============================================================ -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <button class="nav-toggle" aria-label="Atidaryti meniu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Pagrindinė navigacija">
+        <ul>
+          <li><a href="#pagrindinis" class="is-active">PAGRINDINIS</a></li>
+          <li><a href="#apie-mane">APIE MANE</a></li>
+          <li><a href="#psichoterapija">PSICHOTERAPIJA</a></li>
+          <li><a href="#supervizijos">SUPERVIZIJOS</a></li>
+          <li><a href="#mokymai">MOKYMAI</a></li>
+          <li><a href="#kontaktai">KONTAKTAI</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       WP: front-page.php  (hero)
+       ============================================================ -->
+  <section id="pagrindinis" class="hero">
+    <div class="hero__image" style="background-image: url('assets/images/hero-forest.png');"></div>
+    <div class="hero__overlay">
+      <h1 class="hero__title">
+        Ne ištiesinti gyvenimą.<br />
+        Būti jame.
+      </h1>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP: template-parts/section-about.php
+       ============================================================ -->
+  <section id="apie-mane" class="about">
+    <div class="about__inner">
+      <div class="about__text">
+        <h2 class="section-title section-title--light">APIE MANE</h2>
+        <p>Esu Inga Kreivėnaitė. Jau pavardėje tarsi užkoduotas nuo ankstyvos paauglystės kirbantis klausimas: ar tiesus kelias visada yra vienintelis? Gana anksti pastebėjau, kad, nepaisant panašių sovietinių daugiabučių, kuriuose augome, ir vienodų mokyklinių uniformų, kurias dėvėjome, tuos pačius kasdienius reginius kiekvienas patiriame ir išgyvename savaip. Troškau geriau pažinti ne tik savo, bet ir kitų minčių sraigtelius – kaip jie sukasi, kodėl kartais stringa, kas kuria įtampą ir ją atpalaiduoja.</p>
+        <p>Mokiausi klausytis. Ausimis gaudžiau, kaip skamba aplinkinių žodžiai ir kaip jie kuria jaukią, o kartais bauginančią melodiją. Iš to, ką išgirsdavau, gimdavo ilgi dialogai, padovanoję galimybę susitikti su kitu ir pabūti šalia jo pasaulio.</p>
+      </div>
+      <div class="about__photo">
+        <img src="assets/images/inga-portrait.png" alt="Inga Kreivėnaitė portretas" />
+      </div>
+      <a href="apie-mane.html" class="cta-more">Sužinoti daugiau <span class="cta-more__arrow" aria-hidden="true"></span></a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP: template-parts/section-service-cards.php
+       ============================================================ -->
+  <section class="service-cards">
+    <div class="service-cards__inner">
+      <a href="#psichoterapija" class="service-card">
+        <div class="service-card__image">
+          <img src="assets/images/card-psichoterapija.png" alt="Psichoterapija" />
+        </div>
+        <h3 class="service-card__label">PSICHOTERAPIJA</h3>
+      </a>
+      <a href="#supervizijos" class="service-card">
+        <div class="service-card__image">
+          <img src="assets/images/card-supervizijos.png" alt="Supervizijos" />
+        </div>
+        <h3 class="service-card__label">SUPERVIZIJOS</h3>
+      </a>
+      <a href="#mokymai" class="service-card">
+        <div class="service-card__image">
+          <img src="assets/images/card-mokymai.png" alt="Mokymai" />
+        </div>
+        <h3 class="service-card__label">MOKYMAI</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WP: template-parts/section-psichoterapija.php
+       ============================================================ -->
+  <section id="psichoterapija" class="service-detail service-detail--text-left">
+    <div class="service-detail__inner">
+      <div class="service-detail__content">
+        <h2 class="section-title section-title--light">PSICHOTERAPIJA</h2>
+        <div class="service-detail__columns">
+          <div class="service-detail__col">
+            <p class="lead"><strong>Ne apie tai, kaip turėtų būti.</strong><br />Apie tai, kaip yra.</p>
+            <p>Į terapiją dažnai ateinama tada, kai gyvenime daugėja įtampos, skausmo ar nerimo ir norisi aiškaus atsakymo, kaip iš to ištrūkti. Tačiau tikiu, kad prasmingi pokyčiai retai prasideda nuo kito žmogaus patarimo, kaip reikėtų gyventi. Jie gimsta atidžiau pažvelgus į savo patirtį, geriau supratus savo pasirinkimus ir atradus, kas iš tiesų svarbu.</p>
+          </div>
+          <div class="service-detail__col">
+            <p>Konsultuoju remdamasi egzistencinės psichoterapijos principais ir ypatingą dėmesį skiriu:</p>
+            <p><strong>Tarpasmeniniam ryšiui.</strong> Tikiu, kad gilus santykis su kitu padeda mažinti vienišumo ir izoliacijos jausmą. Todėl siekiu kurti pasitikėjimu grįstą erdvę, kurioje būtų saugu kalbėti ir drąsu tyrinėti savo gyvenimo patirtis.</p>
+            <p><strong>Buvimui čia ir dabar.</strong> Susitikimuose svarbu ne tik tai, ką pasakojame, bet ir kas vyksta tarp mūsų. Šis ryšys gali tapti veidrodžiu, kuriame pamatome, kaip kuriame santykius su kitais.</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-detail__photo">
+        <img src="assets/images/psichoterapija-sofa.png" alt="Psichoterapijos sesija" />
+      </div>
+    </div>
+    <a href="psichoterapija.html" class="cta-more">Sužinoti daugiau <span class="cta-more__arrow" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ============================================================
+       WP: template-parts/section-supervizijos.php
+       ============================================================ -->
+  <section id="supervizijos" class="service-detail service-detail--image-left">
+    <div class="service-detail__inner service-detail__inner--reverse">
+      <div class="service-detail__content">
+        <h2 class="section-title section-title--light">SUPERVIZIJOS</h2>
+        <div class="service-detail__columns">
+          <div class="service-detail__col">
+            <p>Ne apie paruoštus atsakymus. Apie galimybę mokytis iš savo darbo.</p>
+            <p>Kasdienybėje dažnai įsisukame į darbų sūkurį, skubime, sprendžiame, keičiame, todėl ne visada lieka laiko pastebėti, kas vyksta. Supervizija suteikia erdvės trumpam atsitraukti nuo veikimo ir atidžiau pažvelgti į savo profesinę patirtį, geriau suprasti, kur stringama, kas kelia įtampą, o kas padeda judėti pirmyn.</p>
+          </div>
+          <div class="service-detail__col">
+            <p>Susitikimuose tyrinėjame santykius su klientais, kolegomis ir komanda, profesinius vaidmenis, pasirinkimus, kylančias reakcijas ir platesnę organizacijos aplinką. Keičiant žvilgsnio kampą kartais tampa matoma tai, ko būnant pačioje situacijoje pastebėti nepavyksta.</p>
+            <p>Supervizija nėra vieta, kurioje supervizorius žino teisingą atsakymą. Man svarbus gyvas dialogas, refleksija ir smalsumas tam, kas gali atsiverti pažvelgus kitaip.</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-detail__photo">
+        <img src="assets/images/supervizijos-portrait.png" alt="Supervizijos sesija" />
+      </div>
+    </div>
+    <a href="supervizijos.html" class="cta-more">Sužinoti daugiau <span class="cta-more__arrow" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ============================================================
+       WP: template-parts/section-mokymai.php
+       ============================================================ -->
+  <section id="mokymai" class="service-detail service-detail--text-left">
+    <div class="service-detail__inner">
+      <div class="service-detail__content">
+        <h2 class="section-title section-title--light">MOKYMAI</h2>
+        <div class="service-detail__list">
+          <p><strong>Tarpkultūrinis ir įtraukusis ugdymas.</strong><br />Aprašymo trūksta – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p><strong>Darbas su mažiau galimybių turinčiu jaunimu.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p><strong>Projektų rengimas ir valdymas.</strong><br />Aprašymas – Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="service-detail__photo">
+        <img src="assets/images/mokymai-podium.png" alt="Mokymai" />
+      </div>
+    </div>
+    <a href="mokymai.html" class="cta-more">Sužinoti daugiau <span class="cta-more__arrow" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ============================================================
+       WP: footer.php  (contact + footer image + bottom bar)
+       ============================================================ -->
+  <footer id="kontaktai" class="site-footer">
+    <div class="site-footer__image" style="background-image: url('assets/images/footer-flowers.png');"></div>
+    <div class="site-footer__overlay">
+      <h2 class="section-title section-title--dark">SUSISIEK</h2>
+      <ul class="contact-list">
+        <li><a href="tel:+37062898903">+370 6 289 8903</a></li>
+        <li><a href="mailto:inga@kreivenaite.com">inga@kreivenaite.com</a></li>
+        <li>Naujamiestis, Vilnius</li>
+      </ul>
+    </div>
+    <div class="site-footer__bottom"></div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>

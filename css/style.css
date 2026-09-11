@@ -1,0 +1,552 @@
+/* =================================================================
+   Inga Kreivėnaitė – front-end styles
+   Structured to map cleanly onto a future WordPress theme:
+     - Design tokens (CSS custom properties) → future WP theme.json
+     - Section class names mirror WP template-part names
+   ================================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Colors */
+  --color-green-dark: #354d3f;   /* nav, section backgrounds, about box */
+  --color-olive: #acb193;        /* page background */
+  --color-grey-light: #dfe1e1;   /* overlay boxes, service cards */
+  --color-footer-bottom: #2d2d2d;
+  --color-text-dark: #000000;
+  --color-text-light: #ffffff;
+
+  /* Fonts */
+  --font-head: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --font-contact: "Inter", system-ui, sans-serif;
+
+  /* Layout */
+  --page-width: 1280px;
+  /* Shared left edge for: hero slogan box, about container,
+     psichoterapija/mokymai text, supervizijos image container */
+  --content-align: 93px;
+  --cta-bottom: 48px;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--color-olive);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-weight: 500;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* Centered / constrained content (not full-bleed) */
+.page,
+.site-header__inner,
+.service-cards__inner {
+  width: 100%;
+  max-width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Shared bits ---------- */
+.section-title {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin: 0 0 24px;
+}
+.section-title--light { color: var(--color-text-light); }
+.section-title--dark  { color: var(--color-text-dark); }
+
+/* ---------- CTA button: fixed at bottom of each content section ---------- */
+.cta-more {
+  position: absolute;
+  bottom: var(--cta-bottom);
+  left: var(--content-align);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-head);
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--color-text-light);
+  border-bottom: 1px solid currentColor;
+  padding: 0 0 6px;
+  transition: opacity 0.2s ease;
+}
+.cta-more:hover { opacity: 0.7; }
+.cta-more__arrow {
+  display: block;
+  width: 22px;
+  height: 11px;
+  background: currentColor;
+  clip-path: polygon(0 40%, 70% 40%, 70% 0, 100% 50%, 70% 100%, 70% 60%, 0 60%);
+}
+
+/* ---------- Site header / nav ---------- */
+.site-header {
+  background-color: var(--color-green-dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 125px;
+  padding: 0 36px 0 32px;
+}
+.primary-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.primary-nav a {
+  font-family: var(--font-head);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  color: var(--color-text-light);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.primary-nav a:hover,
+.primary-nav a.is-active { opacity: 1; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  width: 26px;
+  height: 2px;
+  background: var(--color-text-light);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ---------- Hero (full-bleed) ---------- */
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  height: 849px;
+  overflow: hidden;
+}
+.hero__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.hero__overlay {
+  position: absolute;
+  left: var(--content-align);
+  top: 172px;
+  width: 403px;
+  height: 316px;
+  background-color: var(--color-grey-light);
+  display: flex;
+  align-items: center;
+  padding: 0 52px;
+}
+.hero__title {
+  font-family: var(--font-head);
+  font-weight: 400;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.05;
+  font-size: 40px;
+}
+.hero__title br + * { font-size: 48px; }
+
+/* ---------- About (Apie mane) ----------
+   Pattern A: gap on LEFT, container flush RIGHT */
+.about {
+  position: relative;
+  margin-top: -207px; /* overlap hero bottom */
+  z-index: 2;
+}
+.about__inner {
+  position: relative;
+  display: flex;
+  background-color: var(--color-green-dark);
+  height: 575px;
+  margin-left: var(--content-align);
+  margin-right: 0;
+  width: calc(100% - var(--content-align));
+  max-width: none;
+}
+.about__text {
+  flex: 0 0 558px;
+  padding: 61px 86px 72px;
+  color: var(--color-text-light);
+}
+.about__text p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+  max-width: 361px;
+}
+/* CTA inside about box → inset to match text start */
+.about__inner > .cta-more {
+  left: 86px;
+}
+.about__photo {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+/* Figma crop: image scaled to 163.89% height, shifted up by 43.35% */
+.about__photo img {
+  position: absolute;
+  left: 0;
+  top: -43.35%;
+  width: 100%;
+  height: 163.89%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ---------- Service cards grid ---------- */
+.service-cards {
+  padding: 100px 0 0;
+}
+.service-cards__inner {
+  display: flex;
+  justify-content: center;
+  gap: 71px;
+  padding: 0 90px;
+}
+.service-card {
+  width: 319px;
+  height: 319px; /* nearer to square than the taller 379 Figma frame */
+  background-color: var(--color-grey-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 36px 24px 28px;
+  transition: transform 0.2s ease;
+}
+.service-card:hover { transform: translateY(-4px); }
+.service-card__image {
+  width: 198px;
+  height: 198px; /* square crop matching the visual in Figma */
+  overflow: hidden;
+}
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.service-card__label {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+/* ---------- Detailed service sections ----------
+   Alternating full-bleed:
+   A (image-left / about): gap LEFT, flush RIGHT
+   B (text-left):          flush LEFT, gap RIGHT */
+.service-detail {
+  position: relative;
+  margin-top: 60px;
+  width: calc(100% - var(--content-align));
+  max-width: none;
+  height: 497px;
+  background-color: var(--color-green-dark);
+  color: var(--color-text-light);
+}
+/* Pattern B – Psichoterapija, Mokymai */
+.service-detail--text-left {
+  margin-left: 0;
+  margin-right: var(--content-align);
+}
+/* Pattern A – Supervizijos (same as Apie mane) */
+.service-detail--image-left {
+  margin-left: var(--content-align);
+  margin-right: 0;
+}
+
+.service-detail__inner {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+.service-detail__inner--reverse { flex-direction: row-reverse; }
+
+.service-detail__content {
+  flex: 1;
+  padding: 79px 40px 80px var(--content-align);
+  min-width: 0;
+}
+/* Supervizijos: text after photo, keep gutter from image */
+.service-detail--image-left .service-detail__content {
+  padding: 79px 83px 80px 87px;
+}
+/* CTA under text column on Supervizijos */
+.service-detail--image-left > .cta-more {
+  left: calc(430px + 87px);
+}
+
+.service-detail__photo {
+  flex: 0 0 38%;
+  max-width: 520px;
+  min-width: 320px;
+  overflow: hidden;
+  position: relative;
+}
+.service-detail--image-left .service-detail__photo {
+  flex: 0 0 430px;
+  max-width: 430px;
+}
+.service-detail__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.service-detail--image-left .service-detail__photo img {
+  top: -9.85%;
+  height: 129.78%;
+  max-width: none;
+}
+
+.service-detail__columns {
+  display: flex;
+  gap: 53px;
+  max-width: 577px;
+}
+.service-detail__col {
+  flex: 0 0 262px;
+}
+.service-detail__col p,
+.service-detail__list p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+.service-detail__col .lead {
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.service-detail__col strong { font-weight: 700; }
+
+.service-detail__list {
+  max-width: 353px;
+}
+.service-detail__list p { margin-bottom: 20px; }
+.service-detail__list strong { font-weight: 700; }
+
+/* ---------- Footer / contact ---------- */
+.site-footer {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 60px 0 0;
+  height: 472px; /* 437 image + 35 bottom bar */
+}
+.site-footer__image {
+  position: absolute;
+  inset: 0 0 35px 0;
+  background-size: cover;
+  background-position: center;
+}
+.site-footer__overlay {
+  position: absolute;
+  left: var(--content-align);
+  top: 0;
+  width: 403px;
+  height: 258px;
+  background-color: var(--color-grey-light);
+  padding: 54px 52px 0;
+  color: var(--color-text-dark);
+  z-index: 2;
+}
+.site-footer__overlay .section-title {
+  font-size: 24px;
+  margin-bottom: 28px;
+}
+.contact-list { font-family: var(--font-contact); }
+.contact-list li {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+.contact-list a:hover { text-decoration: underline; }
+.site-footer__bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  background-color: var(--color-footer-bottom);
+}
+
+/* =================================================================
+   Responsive – scale the fixed 1280px design down on smaller screens
+   ================================================================= */
+@media (max-width: 1280px) {
+  .site-header__inner,
+  .hero,
+  .service-cards__inner {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .primary-nav ul { gap: 22px; }
+  .primary-nav a { font-size: 20px; }
+
+  .hero { height: 620px; }
+  .hero__overlay { left: 48px; top: 120px; width: 320px; height: 250px; padding: 0 36px; }
+  .hero__title { font-size: 32px; }
+  .hero__title br + * { font-size: 38px; }
+
+  .about { margin-top: -140px; }
+  .about__inner {
+    height: auto;
+    flex-direction: column;
+    margin-left: 32px;
+    margin-right: 0;
+    width: calc(100% - 32px);
+  }
+  .about__text { flex: none; padding: 48px 32px 72px; }
+  .about__photo { flex: none; width: 100%; height: 420px; }
+  .about__photo img { top: -30%; height: 160%; }
+  .about__inner > .cta-more { left: 32px; }
+
+  .service-cards__inner { flex-wrap: wrap; gap: 32px; padding: 0 32px; }
+  .service-card { width: 100%; max-width: 319px; height: 319px; margin: 0 auto; }
+
+  .service-detail {
+    width: calc(100% - 32px);
+    height: auto;
+    margin-top: 32px;
+  }
+  .service-detail--text-left {
+    margin-left: 0;
+    margin-right: 32px;
+  }
+  .service-detail--image-left {
+    margin-left: 32px;
+    margin-right: 0;
+  }
+  .service-detail__inner { flex-direction: column !important; }
+  .service-detail__content,
+  .service-detail--image-left .service-detail__content {
+    padding: 48px 32px 80px;
+  }
+  .service-detail__columns { flex-direction: column; gap: 24px; max-width: 100%; }
+  .service-detail__col { flex: none; }
+  .service-detail__photo,
+  .service-detail--image-left .service-detail__photo {
+    flex: none;
+    max-width: none;
+    min-width: 0;
+    height: 320px;
+    width: 100%;
+  }
+  .service-detail--image-left .service-detail__photo img {
+    top: 0;
+    height: 100%;
+  }
+  .service-detail > .cta-more,
+  .service-detail--image-left > .cta-more {
+    left: 32px;
+  }
+
+  .site-footer { height: auto; }
+  .site-footer__image { position: relative; height: 320px; }
+  .site-footer__overlay { position: relative; left: 0; top: 0; width: 100%; padding: 48px 32px; }
+  .site-footer__bottom { position: relative; }
+}
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    height: 80px;
+    padding: 0 20px;
+    justify-content: flex-end;
+  }
+
+  .nav-toggle { display: flex; }
+  .primary-nav {
+    position: fixed;
+    inset: 80px 0 auto 0;
+    background: var(--color-green-dark);
+    padding: 24px 32px;
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+  .primary-nav.is-open { transform: translateY(0); }
+  .primary-nav ul { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .primary-nav a { font-size: 22px; }
+
+  .hero { height: 460px; }
+  .hero__overlay { left: 24px; right: 24px; top: 80px; width: auto; height: 200px; padding: 0 28px; }
+  .hero__title { font-size: 26px; }
+  .hero__title br + * { font-size: 30px; }
+
+  .about { margin-top: -80px; }
+  .about__inner {
+    margin-left: 16px;
+    width: calc(100% - 16px);
+  }
+  .about__text { padding: 36px 24px 72px; }
+  .about__photo { height: 340px; }
+  .about__inner > .cta-more { left: 24px; }
+
+  .service-cards { padding-top: 60px; }
+  .service-cards__inner { padding: 0 16px; gap: 24px; }
+
+  .service-detail { width: calc(100% - 16px); }
+  .service-detail--text-left { margin-right: 16px; }
+  .service-detail--image-left { margin-left: 16px; }
+  .service-detail__content,
+  .service-detail--image-left .service-detail__content {
+    padding: 36px 24px 72px;
+  }
+  .service-detail > .cta-more,
+  .service-detail--image-left > .cta-more {
+    left: 24px;
+  }
+  .site-footer__overlay { padding: 36px 24px; }
+}
+
+
