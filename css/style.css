@@ -79,17 +79,20 @@ ul { list-style: none; margin: 0; padding: 0; }
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   font-family: var(--font-head);
-  font-size: 16px;
-  letter-spacing: 0.02em;
+  font-size: 22px;
+  letter-spacing: 0.04em;
   line-height: 1;
-  color: var(--color-text-light);
-  border-bottom: 1px solid currentColor;
-  padding: 0 0 6px;
-  transition: opacity 0.2s ease;
+  text-align: center;
+  color: var(--color-green-dark);
+  background-color: #c8d4ca;
+  border: none;
+  border-radius: 0;
+  padding: 16px 36px;
+  transition: background-color 0.2s ease;
 }
-.cta-more:hover { opacity: 0.7; }
+.cta-more:hover { background-color: #d4ded6; }
 .cta-more__arrow {
   display: block;
   width: 22px;
@@ -418,6 +421,124 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* =================================================================
+   Content page (apie-mane, psichoterapija, supervizijos, mokymai)
+   Reusable template — only text and images change between pages.
+   ================================================================= */
+
+.content-page {
+  position: relative;
+  width: 100%;
+  max-width: none;
+}
+
+/* Page title */
+.content-page__title {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  color: var(--color-green-dark);
+  margin: 106px 0 0 var(--content-align);
+  line-height: 1;
+}
+
+/* Horizontal divider between blocks — thin, starts at --content-align */
+.content-divider {
+  border: 0;
+  border-top: 1px solid var(--color-green-dark);
+  margin: 0 0 0 var(--content-align);
+  width: calc(100% - var(--content-align));
+  max-width: 1050px;
+}
+
+/* Bio block: alternating text/image with offset green box behind image.
+   All blocks start at --content-align from the left (shared vertical line). */
+.bio-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 129px;
+  padding: 80px 0 80px var(--content-align);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/* image-left variant: image still starts at --content-align, text follows */
+.bio-block--image-left { flex-direction: row; }
+
+.bio-block__text {
+  flex: 0 0 482px;
+  color: var(--color-green-dark);
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 500;
+}
+.bio-block__text p { margin: 0 0 26px; }
+.bio-block__text p:last-child { margin-bottom: 0; }
+.bio-block__text strong { font-weight: 700; }
+
+/* Image with offset dark-green box behind it */
+.bio-block__image {
+  position: relative;
+  flex: 0 0 455px;
+  height: 598px;
+}
+.bio-block__image img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 2;
+}
+/* The green box — offset behind the image */
+.bio-block__image::before {
+  content: "";
+  position: absolute;
+  background-color: var(--color-green-dark);
+  z-index: 1;
+}
+/* Image right → box offset top-left */
+.bio-block--image-right .bio-block__image::before {
+  top: -72px;
+  left: -72px;
+  width: 389px;
+  height: 572px;
+}
+/* Image left → box offset bottom-right */
+.bio-block--image-left .bio-block__image::before {
+  bottom: -72px;
+  right: -72px;
+  width: 365px;
+  height: 537px;
+}
+
+/* Education / qualifications list */
+.qualifications {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 80px 0 80px var(--content-align);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.qualifications__list {
+  flex: 0 0 803px;
+  color: var(--color-green-dark);
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.qualifications__list p { margin: 0 0 4px; }
+.qualifications__decor {
+  flex: 0 0 202px;
+  height: 313px;
+}
+.qualifications__decor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =================================================================
    Responsive – scale the fixed 1280px design down on smaller screens
    ================================================================= */
 @media (max-width: 1280px) {
@@ -495,6 +616,25 @@ ul { list-style: none; margin: 0; padding: 0; }
   .site-footer__image { position: relative; height: 320px; }
   .site-footer__overlay { position: relative; left: 0; top: 0; width: 100%; padding: 48px 32px; }
   .site-footer__bottom { position: relative; }
+
+  /* Content page */
+  .content-page__title { margin-left: 32px; }
+  .content-divider { margin-left: 32px; width: calc(100% - 32px); }
+  .bio-block {
+    flex-direction: column;
+    gap: 48px;
+    padding: 60px 0 60px 32px;
+  }
+  .bio-block--image-left { flex-direction: column; }
+  .bio-block__text { flex: none; width: 100%; }
+  .bio-block__image { flex: none; width: 100%; height: 480px; }
+  .qualifications {
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 0 60px 32px;
+  }
+  .qualifications__list { flex: none; width: 100%; }
+  .qualifications__decor { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -547,6 +687,25 @@ ul { list-style: none; margin: 0; padding: 0; }
     left: 24px;
   }
   .site-footer__overlay { padding: 36px 24px; }
+
+  /* Content page */
+  .content-page__title { margin-left: 24px; }
+  .content-divider { margin-left: 24px; width: calc(100% - 24px); }
+  .bio-block {
+    flex-direction: column;
+    gap: 40px;
+    padding: 48px 0 48px 24px;
+  }
+  .bio-block--image-left { flex-direction: column; }
+  .bio-block__text { flex: none; width: 100%; }
+  .bio-block__image { flex: none; width: 100%; height: 420px; }
+  .qualifications {
+    flex-direction: column;
+    gap: 32px;
+    padding: 48px 0 48px 24px;
+  }
+  .qualifications__list { flex: none; width: 100%; }
+  .qualifications__decor { display: none; }
 }
 
 
