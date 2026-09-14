@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontaktai – Inga Kreivėnaitė</title>
+  <meta name="description" content="Susisiekite su Inga Kreivėnaite – telefonu, el. paštu arba žinute. Vytenio g. 9, Vilnius." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <button class="nav-toggle" aria-label="Atidaryti meniu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Pagrindinė navigacija">
+        <ul>
+          <li><a href="index.html">PAGRINDINIS</a></li>
+          <li><a href="apie-mane.html">APIE MANE</a></li>
+          <li><a href="psichoterapija.html">PSICHOTERAPIJA</a></li>
+          <li><a href="supervizijos.html">SUPERVIZIJOS</a></li>
+          <li><a href="mokymai.html">MOKYMAI</a></li>
+          <li><a href="kontaktai.html" class="is-active">KONTAKTAI</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-page">
+    <h1 class="content-page__title">KONTAKTAI</h1>
+
+    <section class="bio-block bio-block--image-right">
+      <div class="bio-block__text">
+        <p class="bio-block__heading">Susisiekite</p>
+        <ul class="contact-page__list">
+          <li><a href="tel:+37062898903">+370 6 289 8903</a></li>
+          <li><a href="mailto:inga@kreivenaite.lt">inga@kreivenaite.lt</a></li>
+          <li>Vytenio g. 9, Vilnius</li>
+        </ul>
+
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="227e332b-60b8-4cda-933f-2f1faedd3139" />
+          <input type="hidden" name="subject" value="Žinutė iš inga.kreivenaite.lt" />
+
+          <label class="contact-form__field">
+            <span>Vardas</span>
+            <input type="text" name="name" required autocomplete="name" />
+          </label>
+
+          <label class="contact-form__field">
+            <span>El. paštas</span>
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+
+          <label class="contact-form__field">
+            <span>Žinutė</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+
+          <button type="submit" class="cta-more contact-form__submit">Siųsti</button>
+        </form>
+      </div>
+      <div class="bio-block__image">
+        <img src="assets/images/kontaktai-portrait.jpg" alt="Inga Kreivėnaitė" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--no-card">
+    <div class="site-footer__image">
+      <img src="assets/images/footer-flowers.png" alt="" />
+    </div>
+    <div class="site-footer__bottom"></div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>

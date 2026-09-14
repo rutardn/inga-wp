@@ -184,12 +184,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: absolute;
   left: var(--content-align);
   top: 172px;
-  width: 290px;
-  height: 190px;
-  background-color: var(--color-grey-light);
+  width: 280px;
+  height: 130px;
+  background-color: rgba(223, 225, 225, 0.72);
   display: flex;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 18px;
 }
 .hero__title {
   font-family: var(--font-head);
@@ -198,6 +198,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin: 0;
   line-height: 1.05;
   font-size: 32px;
+}
+.hero__title-line {
+  white-space: nowrap;
 }
 .hero__title-emphasis { font-size: 32px; }
 
@@ -429,6 +432,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin: 260px 0 0; /* space after MOKYMAI + room for larger SUSISIEK overhang */
   height: 472px; /* 437 image + 35 bottom bar */
 }
+.site-footer--no-card {
+  margin-top: 80px;
+}
 .site-footer__image {
   position: absolute;
   inset: 0 0 35px 0;
@@ -447,10 +453,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: absolute;
   left: var(--content-align);
   top: -140px;
-  width: 460px;
-  height: 300px;
-  background-color: var(--color-grey-light);
-  padding: 56px 56px 0;
+  width: 320px;
+  height: 240px;
+  background-color: rgba(223, 225, 225, 0.72);
+  padding: 40px 32px 0;
   color: var(--color-text-dark);
   z-index: 2;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -559,6 +565,14 @@ ul { list-style: none; margin: 0; padding: 0; }
 .bio-block__text > .bio-block__heading:not(:first-child) {
   margin-top: 26px;
 }
+.bio-block__text p.bio-block__quote {
+  margin-bottom: 8px;
+}
+.bio-block__text p.bio-block__credit {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.35;
+}
 .bio-block__text ul {
   list-style: disc;
   margin: 0 0 26px;
@@ -654,11 +668,78 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .qualifications--practical .qualifications__list {
   flex: 0 0 var(--bio-col);
+  font-weight: 500;
+}
+.qualifications--practical .qualifications__list strong {
+  font-weight: 700;
 }
 .qualifications--practical .qualifications__decor {
   width: 220px;
   max-width: 220px;
   margin-left: 0;
+}
+
+/* ---------- Kontaktai page ---------- */
+.contact-page__list {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 500;
+  color: var(--color-green-dark);
+}
+.contact-page__list li { margin: 0 0 8px; }
+.contact-page__list a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--color-green-dark);
+}
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.contact-form__field input,
+.contact-form__field textarea {
+  width: 100%;
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(53, 77, 63, 0.35);
+  border-radius: 0;
+  background-color: rgba(223, 225, 225, 0.72);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  resize: vertical;
+}
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  border-color: var(--color-green-dark);
+  background-color: rgba(223, 225, 225, 0.92);
+}
+.contact-form__field textarea {
+  min-height: 140px;
+}
+.contact-form__submit {
+  align-self: flex-start;
+  margin-top: 8px;
+  cursor: pointer;
+  border: none;
 }
 
 /* =================================================================
@@ -678,7 +759,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .primary-nav a { font-size: 20px; }
 
   .hero { height: 620px; }
-  .hero__overlay { left: 48px; top: 120px; width: 260px; height: 170px; padding: 0 28px; }
+  .hero__overlay { left: 48px; top: 120px; width: 255px; height: 120px; padding: 0 16px; }
   .hero__title { font-size: 28px; }
   .hero__title-emphasis { font-size: 28px; }
 
@@ -818,7 +899,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .primary-nav a { font-size: 22px; }
 
   .hero { height: 460px; }
-  .hero__overlay { left: 24px; top: 80px; width: 220px; height: 140px; padding: 0 22px; }
+  .hero__overlay { left: 24px; top: 80px; width: 215px; height: 100px; padding: 0 14px; }
   .hero__title { font-size: 24px; }
   .hero__title-emphasis { font-size: 24px; }
 
